@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -8,10 +9,12 @@ import Home from "../Pages/Home";
 
 function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/app" element={<Home />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/app" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
