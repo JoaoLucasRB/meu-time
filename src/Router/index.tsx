@@ -4,15 +4,15 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Login from "../Pages/Login";
-import Home from "../Pages/Home";
+import Login from "../pages/Login";
+import Home from "../pages/Home";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/app" element={<Home />} />
+        <Route path="app" element={<Home />} />
       </Routes>
     </BrowserRouter>
   )
