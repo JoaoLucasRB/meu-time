@@ -1,8 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
-import {} from './styles'
+import { Container, TextHighlight, Wrapper } from './styles'
 import { requests, cookies } from '../../utils';
 import { useNavigate } from 'react-router-dom';
+import LogoText from '../../components/common/LogoText';
+import Input from '../../components/Login/Input';
+import LoginButton from '../../components/Login/LoginButton';
 
 function Login() {
   const navigate = useNavigate();
@@ -16,11 +19,11 @@ function Login() {
       .then(res => res.json())
       .then(res => {
         console.log(res.errors.token)
-        if(res.errors.token) {
+        if (res.errors.token) {
           setErrorMessage("API-Key inválida");
           return;
         }
-        if(!res.errors.length) {
+        if (!res.errors.length) {
           cookies.setCookie("mt-api-key", userKey, 3);
           navigate('/app', { replace: true });
         }
@@ -36,7 +39,7 @@ function Login() {
   }
 
   useEffect(() => {
-    if(cookies.getCookie("mt-api-key"))
+    if (cookies.getCookie("mt-api-key"))
       navigate('/app', { replace: true });
     else
       setRender(true);
@@ -44,17 +47,23 @@ function Login() {
 
   return (
     render ?
-      <div>
-          <input type="text" name="keyLogin" value={userKey} onChange={(e) => setUserKey(e.target.value)}/>
-          <button onClick={() => handleButton()}>Entrar</button>
-          <a href="https://dashboard.api-football.com/register">Não possui uma API-Key?</a>
-          {errorMessage ? 
-          <div>
-            {errorMessage}
-          </div>
-          : <></>}
-      </div>
-    : <></>
+      <Wrapper>
+        <Container>
+          <LogoText />
+          <Input userKey={userKey} setUserKey={setUserKey} />
+          <LoginButton handleButton={handleButton} />
+          <TextHighlight 
+            href="https://dashboard.api-football.com/register">
+              <span>Não possui uma API-Key?</span>
+          </TextHighlight>
+          {errorMessage ?
+            <div>
+              {errorMessage}
+            </div>
+            : <></>}
+        </Container>
+      </Wrapper>
+      : <></>
   );
 }
 

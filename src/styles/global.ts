@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 export default createGlobalStyle`
   *{
@@ -8,11 +9,11 @@ export default createGlobalStyle`
       box-sizing:border-box;
       font-family: 'Open Sans', sans-serif; 
   }
-  
-  #root{
-    margin:0 auto;
-  }
 
+  html, .App {
+    height: 100%;
+  }
+  
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,10 +21,49 @@ export default createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: ${theme.colors.background};
+    height: 100%;
   }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+
+  #root{
+    height: 100%;
+    width: 100%;
+  }
+
+  .Body {
+    height: 100%;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  @font-face {
+    font-family: Lato;
+    font-weight: 100;
+    src: url(fonts/Lato-Thin.ttf);
+  }
+  @font-face {
+    font-family: Lato;
+    font-weight: 300;
+    src: url(fonts/Lato-Light.ttf);
+  }
+  @font-face {
+    font-family: Lato;
+    font-weight: 400;
+    src: url(fonts/Lato-Regular.ttf);
+  }
+  @font-face {
+    font-family: Lato;
+    font-weight: 700;
+    src: url(fonts/Lato-Bold.ttf);
+  }
+  @font-face {
+    font-family: Lato;
+    font-weight: 900;
+    src: url(fonts/Lato-Black.ttf);
+  }
+  @font-face {
+    font-family: Acquire;
+    src: url(fonts/Aquire-BW0ox.otf);
   }
 `
